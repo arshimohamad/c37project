@@ -67,7 +67,10 @@ function draw() {
   
 
   if (gameState === PLAY) {
-    score = frameCount;
+   // score = Math.round(frameCount/4);
+    if (frameCount % 10 === 0){
+      score = score+1;
+    }
 
     if (keyDown("space")) {
       trex.velocityY = -10;
@@ -103,6 +106,7 @@ function draw() {
       gameOver.visible=false;
       restart.visible=false;
       trex.changeAnimation("running",trex);
+      score=0;
     }
   }
   trex.collide(invisibleGround);
